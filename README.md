@@ -2,6 +2,8 @@
 
 Break reminder plugin for the Omarchy shell. Modeled on LookAway for macOS.
 
+![LookOut break screen](preview.png)
+
 LookOut counts down from your last break. When the countdown ends, a
 full-screen break screen tells you to look away from the screen for a short
 time. Time away counts as a break, and a break waits for a call or a video
