@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "dpaluy.lookout",
+  "name": "LookOut",
+  "version": "0.1.0",
+  "author": "David Paluy",
+  "license": "MIT",
+  "description": "Break reminder. Counts down from your last break, then covers the screen for a short break. A minute without input counts as a break, and you can pause it. A break waits for a call or a playing video to end.",
+  "kinds": [
+    "service",
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "LookOut",
+    "description": "Time to the next break, with a popup to start or postpone it.",
+    "category": "Productivity",
+    "aliases": [
+      "break",
+      "breaks",
+      "lookout",
+      "lookaway",
+      "eyes",
+      "rest"
+    ],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "intervalMin": 45,
+      "breakSec": 45,
+      "idleSec": 60,
+      "waitWhenBusy": true,
+      "allowSkip": true,
+      "ignoredApps": "cava,easyeffects"
+    },
+    "schema": [
+      {
+        "key": "intervalMin",
+        "type": "integer",
+        "label": "Minutes between breaks",
+        "min": 1,
+        "max": 240,
+        "step": 5,
+        "defaultValue": 45
+      },
+      {
+        "key": "breakSec",
+        "type": "integer",
+        "label": "Break length (seconds)",
+        "min": 5,
+        "max": 1800,
+        "step": 15,
+        "defaultValue": 45
+      },
+      {
+        "key": "idleSec",
+        "type": "integer",
+        "label": "Seconds without input that count as a break",
+        "min": 10,
+        "max": 3600,
+        "step": 10,
+        "defaultValue": 60,
+        "description": "When you do not touch the keyboard or mouse for this long, LookOut records a break and starts the countdown again when you come back. Not during a call."
+      },
+      {
+        "key": "waitWhenBusy",
+        "type": "boolean",
+        "label": "Wait for calls and videos",
+        "defaultValue": true,
+        "description": "A break that comes due during a call (microphone or camera) or while a browser or video player plays starts when it ends. The countdown does not stop."
+      },
+      {
+        "key": "allowSkip",
+        "type": "boolean",
+        "label": "Allow skipping a break",
+        "defaultValue": true,
+        "description": "Shows Skip and +5 min on the break screen, and lets Esc skip."
+      },
+      {
+        "key": "ignoredApps",
+        "type": "string",
+        "label": "Apps that are not calls",
+        "defaultValue": "cava,easyeffects",
+        "description": "Comma-separated app or process names that record audio but are not calls, such as visualizers or dictation tools."
+      }
+    ]
+  }
+}
